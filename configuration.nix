@@ -11,18 +11,17 @@
   boot.loader.grub.device = "/dev/vda";
 
   services.openssh.enable = true;
+  services.openssh.permitRootLogin = "no";
 
-
-  users.extraUsers.nixos = {
+  users.extraUsers.ghost = {
     isNormalUser = true;
-
     extraGroups = ["wheel"];
     openssh.authorizedKeys.keys =
       [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqq3LWPkSfldIKiBFK+/JYSQgf/uehjKaDOQFFMV/L8IdQ59H6r0swHj6Ohcg7ThkxaA01BcVQWJiHokza5t9Y3MqiMYu1qGCCfwXnVEHnM6ORacOFgYioY7AaAxmKR3Vg09oJKnMgDFPrtLUke2/6I9Mzj+eCOhTLaO0CJFgR6J2wwQV+PNF2eBNfT2WBzVk6/3LAlElfgwU67ct+NAJ1W6p5n3gTD2iRh/0mdq0UFf/wA8OC0+xc5tWZDbmdq2wFAzm/8CvgCqEC6vmCcTyrGQStj6TFO3nhEJN9z4oPNzT9sEeghWT+gEJ/q8LcO//I4Pw0flK/B90X0sLxa5rP (none)"
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDjsHk6IYqS1cX/xV0jEYr95PGyDpzxoYxah2cUmA5OY8N8HxiFhHR2xjUGq9B/W1g54Cpwz08Krk+F6L0nUqfT3tWMXdv1vXvL5NiC2sT7u/hsOwiVsKGc2nqgIUNrI7/czVRaK9X6Tv+IPHm1aFBApiuCRppYIIzlro2IQBUyaMypur5NTPEVt3oaV1mb7r5aMsB6wO55YlMHICbJIEUin+D0TTY4zfXpZqxvuk/0AhragOcC4xLjP6sz6PTWn7q7jnlI9mLR1vQmL2TFLSZF4wq8trPms95UkpagEhDBjnd8NhBMX2/8WK4qUX5baSCS1mnUHWu59LjIkvkZbSTsNTm0CbpXJYWn+SpUywj71bmPz1BOZE2wJZKnxBcV0ugmFIPhl9jxEhNmN5LtHx/BE956bEIGzX2q3eZHP/Aybmg6Mbhu71fEPCyAzDYQdhU8qrsnEbUqnrQGUwVMnr/31OMZVWf/5FMihvoEQpULOmPFn3n8O38Xp9Wh6TyaEjEOfZJyAj4o1Xyg+AeWFD8+YoAXdYS2qt67O33QEqDvJANjGVpzhssunKrdThr9nTCUo931r7q3lVBYnUaafAtBFt2zngzBiGygLR2HKprFsBmtp1hEfZqvsFTg1J/5o3GbwiHpeao5vJwkZLvLErA1LHHZVnZ6uDDoCphBkhezqQ== somlor+vultr@eml.cc"
       ];
 
   };
 
-  system.stateVersion = "15.09";
+  system.stateVersion = "17.03";
 }
