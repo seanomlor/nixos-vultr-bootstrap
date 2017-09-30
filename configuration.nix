@@ -14,7 +14,7 @@
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
 
-  users.extraUsers.ghost = {
+  users.extraUsers.nixos = {
     isNormalUser = true;
     extraGroups = ["wheel"];
     openssh.authorizedKeys.keys =
