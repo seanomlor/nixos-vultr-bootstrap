@@ -23,9 +23,10 @@
       ];
 
   };
-  
-  environment.variables.LANG = "en_US.UTF-8";
-  environment.variables.LC_CTYPE = "en_US.UTF-8";
-  
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+  };
+   
   system.stateVersion = "18.03";
 }
