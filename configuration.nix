@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
     ];
 
+  boot.kernel.sysctl."vm.overcommit_memory" = "1";
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/vda";
@@ -22,6 +23,9 @@
       ];
 
   };
-
-  system.stateVersion = "17.03";
+  
+  environment.variables.LANG = "en_US.UTF-8";
+  environment.variables.LC_CTYPE = "en_US.UTF-8";
+  
+  system.stateVersion = "18.03";
 }
