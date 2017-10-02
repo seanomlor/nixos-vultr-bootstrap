@@ -20,12 +20,23 @@
 
   environment = {
     systemPackages = with pkgs; [
+      (pkgs.lib.overrideDerivation pkgs.beam.packages.erlangR20.elixir (attrs: {
+        LANG = "en_US.UTF-8";
+        LC_COLLATE = "en_US.UTF-8";
+        LC_CTYPE = "en_US.UTF-8";
+      }))
+      curl
+      gcc
       git
       nix-repl
       tmux
       vim
       wget
     ];
+
+    variables = {
+      EDITOR = "vim";
+    };
   };
 
   i18n = {
@@ -45,6 +56,7 @@
     bash = {
       enableCompletion = true;
     };
+
     ssh = {
       startAgent = true;
     };
@@ -59,7 +71,7 @@
 
   time.timeZone = "America/New_York";
 
-  users.extraUsers.nixos = {
+  users.extraUsers.ghost = {
     isNormalUser = true;
     extraGroups = ["wheel"];
     openssh.authorizedKeys.keys =
