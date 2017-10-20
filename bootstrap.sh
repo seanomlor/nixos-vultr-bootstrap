@@ -7,4 +7,4 @@ nixos-generate-config --root /mnt
 
 cp *.nix /mnt/etc/nixos/
 
-nixos-install
+nixos-install --show-trace --no-root-passwd

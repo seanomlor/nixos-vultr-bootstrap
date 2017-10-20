@@ -1,10 +1,9 @@
-{ config, lib, pkgs, ...}:
+{ config, pkgs, ...}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     kernel = {
@@ -12,9 +11,9 @@
     };
 
     loader = {
+      grub.device = "/dev/vda";
       grub.enable = true;
       grub.version = 2;
-      grub.device = "/dev/vda";
     };
   };
 
@@ -43,8 +42,8 @@
   };
 
   nixpkgs.config = {
-    allowUnfree = true;
     allowBroken = true;
+    allowUnfree = true;
   };
 
   programs = {
@@ -57,11 +56,12 @@
     };
   };
 
+services.sshd.permitRootLogin to "prohibit-password"
+
   services = {
     openssh = {
-      authorizedKeysFiles = lib.mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
       enable = true;
-      permitRootLogin = "no";
+      permitRootLogin = "prohibit-password";
     };
   };
 
@@ -70,8 +70,8 @@
   users = {
     extraUsers = {
       ghost = {
+        extraGroups = [ "wheel" ];
         isNormalUser = true;
-        extraGroups = ["wheel"];
         openssh.authorizedKeys.keys = with import ./ssh-keys.nix; [ sean ];
       };
 
