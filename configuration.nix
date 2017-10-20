@@ -56,8 +56,6 @@
     };
   };
 
-services.sshd.permitRootLogin to "prohibit-password"
-
   services = {
     openssh = {
       enable = true;
