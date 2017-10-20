@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, lib, pkgs, ...}:
 
 {
   imports =
@@ -59,7 +59,7 @@
 
   services = {
     openssh = {
-      authorizedKeysFiles = mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
+      authorizedKeysFiles = lib.mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
       enable = true;
       permitRootLogin = "no";
     };
