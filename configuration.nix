@@ -59,6 +59,7 @@
 
   services = {
     openssh = {
+      authorizedKeysFiles = mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
       enable = true;
       permitRootLogin = "no";
     };
@@ -68,13 +69,13 @@
 
   users = {
     extraUsers = {
-      root = {
-        openssh.authorizedKeys.keys = with import ./ssh-keys.nix; [ sean ];
-      };
-
       ghost = {
         isNormalUser = true;
         extraGroups = ["wheel"];
+        openssh.authorizedKeys.keys = with import ./ssh-keys.nix; [ sean ];
+      };
+
+      root = {
         openssh.authorizedKeys.keys = with import ./ssh-keys.nix; [ sean ];
       };
     };
