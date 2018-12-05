@@ -1,9 +1,8 @@
-Bootstraps a vultr server with nixos
+Bootstraps a [Vultr](https://www.vultr.com) server with [NixOS](https://nixos.org).
 
-Be sure to replace the public key with your own when you fork this
+**NOTE:** Be sure to replace the [public key](./ssh-keys.nix) with your own if you fork this!
 
-
-```
+```bash
 nix-env -iA nixos.gitMinimal
 
 git clone https://github.com/somlor/nixos-vultr-bootstrap.git
